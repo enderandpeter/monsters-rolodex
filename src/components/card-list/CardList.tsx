@@ -8,13 +8,16 @@ export interface CardListProps {
     monsters: Monster[];
 }
 
-export const CardList:React.FC<CardListProps> = (props) => {
+export const CardList: React.FC<CardListProps> = ({monsters}) => {
     return (
         <div className='card-list'>
             {
-                props.monsters.map((monster: Monster) => (
-                    <Card key={monster.id} monster={monster} />
-                ))
+                monsters.length ?
+                    monsters.map((monster: Monster) => (
+                        <Card key={monster.id} monster={monster}/>
+                    ))
+                    :
+                    'Please wait...'
             }
         </div>
     );
